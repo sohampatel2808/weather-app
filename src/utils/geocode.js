@@ -12,7 +12,7 @@ const geocode = (address = '', callback) => {
   };
   const requestUrl = openweather.getGeoLocationUrl(queryParams);
 
-  request({ url: requestUrl, json: true }, (error, { body }) => {
+  request({ url: requestUrl, json: true }, (error, { body } = {}) => {
     if (error) {
       callback('Unable to connect to geolocation service', undefined);
     } else if (body.message || body.length === 0) {
