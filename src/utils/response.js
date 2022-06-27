@@ -15,7 +15,6 @@ const getDefaultResponse = (title) => {
 get404Response = () => {
   return {
     title: '404',
-    authorName: 'Soham Patel',
     errorMessage: 'Page not found'
   }
 }
