@@ -9,18 +9,14 @@
   margin: 0 auto;
   padding: 16px;
 }
-.center-content p {
-  padding-top: 16px;
-  padding-bottom: 16px;
-}
 
-.weather-content {
+.weather-content, .about-us-content, .help-content {
   padding-top: 16px;
   padding-bottom: 16px;
 }
 .weather-content .weather-result-data {
   padding-top: 16px;
-  height: 250px;
+  height: 150px;
 }
 
 .custom-footer {
