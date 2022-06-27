@@ -9,7 +9,7 @@ buttonWeatherSearch.addEventListener('click', () => {
 
   const location = inputWeatherSearch.value;
 
-  const requestUrl = 'http://localhost:3000/weather?address=' + location;
+  const requestUrl = '/weather?address=' + location;
 
   fetch(requestUrl)
     .then(response => {
