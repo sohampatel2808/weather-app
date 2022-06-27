@@ -4,6 +4,7 @@ const hbs = require('hbs');
 
 const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
+const response = require('./utils/response');
 
 const app = express();
 
@@ -20,6 +21,7 @@ hbs.registerPartials(partialsPath);
 // setup static directory to serve
 app.use(express.static(publicDirectoryPath));
 
+// endpoints 
 app.get('', (req, res) => {
   res.render('index', {
     title: 'Weather App',
@@ -42,13 +44,20 @@ app.get('/help', (req, res) => {
 });
 
 app.get('/weather', (req, res) => {
-  geocode('Mumbai', (error, { longitude, latitude, location } = {}) => {
-    if (error) return res.send(error);
+  geocode(req.query.address, (errorMessage, { longitude, latitude, location } = {}) => {
+    if (errorMessage) {
+      return res.send(response.getErrorResponse(errorMessage));
+    }
 
     forecast(longitude, latitude, (error, responseForecastData) => {
-      if (error) return res.send(error);
+      if (error) {
+        return res.send(response.getErrorResponse(errorMessage));
+      }
   
-      return res.send(responseForecastData);
+      return res.send({
+        forecast: responseForecastData,
+        location: location
+      });
     });
   });
 });

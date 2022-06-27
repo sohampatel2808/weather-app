@@ -1,10 +1,11 @@
-const openweather = require('./openweather');
 const request = require('request');
+
+const openweather = require('./openweather');
+const response = require('./response');
 
 const geocode = (address = '', callback) => {
   if (address === null || address.length === 0) {
-    console.log('Please provide address!');
-    return;
+    return callback('Please provide address!');
   }
 
   const queryParams = {
@@ -14,9 +15,9 @@ const geocode = (address = '', callback) => {
 
   request({ url: requestUrl, json: true }, (error, { body } = {}) => {
     if (error) {
-      callback('Unable to connect to geolocation service', undefined);
+      callback('Unable to connect to geolocation service');
     } else if (body.message || body.length === 0) {
-      callback('Unable to find location, try another search.', undefined);
+      callback('Unable to find location, try another search.');
     } else {
       const { lon: longitude, lat: latitude, name: location } = body[0];
 

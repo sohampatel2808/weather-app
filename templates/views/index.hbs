@@ -11,13 +11,23 @@
 
       <div class="weather-content">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Enter location" aria-label="Enter location" aria-describedby="basic-addon2">
+          <input
+            id="input-weather-search"
+            type="text"
+            class="form-control"
+            placeholder="Enter location"
+            aria-label="Enter location"
+            aria-describedby="basic-addon2">
+
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button">Search</button>
+            <button id="button-weather-search" class="btn btn-outline-secondary">Search</button>
           </div>
         </div>
 
-        <div id="weather-result-data" class="weather-result-data"></div>
+        <div class="weather-result-data">
+          <p id="message-1"></p>
+          <p id="message-2"></p>
+        </div>
       </div>
 
       {{>footer}}
