@@ -15,7 +15,7 @@
   padding: 16px;
 }
 
-.weather-content, .about-us-content, .help-content {
+.weather-content, .about-us-content, .help-content, .page-not-found-content {
   padding-top: 16px;
   padding-bottom: 16px;
 }

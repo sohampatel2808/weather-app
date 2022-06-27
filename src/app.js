@@ -23,24 +23,15 @@ app.use(express.static(publicDirectoryPath));
 
 // endpoints 
 app.get('', (req, res) => {
-  res.render('index', {
-    title: 'Weather App',
-    authorName: 'Soham Patel'
-  });
+  res.render('index', response.getDefaultResponse('Weather App'));
 });
 
 app.get('/about', (req, res) => {
-  res.render('about', {
-    title: 'About',
-    authorName: 'Soham Patel'
-  });
+  res.render('about', response.getDefaultResponse('About'));
 });
 
 app.get('/help', (req, res) => {
-  res.render('help', {
-    title: 'Help',
-    authorName: 'Soham Patel'
-  });
+  res.render('help', response.getDefaultResponse('Help'));
 });
 
 app.get('/weather', (req, res) => {
@@ -63,11 +54,7 @@ app.get('/weather', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  res.render('404', {
-    title: '404',
-    authorName: 'Soham Patel',
-    errorMessage: 'Page not found'
-  });
+  res.render('404', response.get404Response());
 });
 
 app.listen(3000, () => {

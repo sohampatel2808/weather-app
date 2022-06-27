@@ -5,6 +5,23 @@ const getErrorResponse = (errorMessage) => {
   }
 }
 
+const getDefaultResponse = (title) => {
+  return {
+    title: title, 
+    authorName: 'Soham Patel'
+  }
+}
+
+get404Response = () => {
+  return {
+    title: '404',
+    authorName: 'Soham Patel',
+    errorMessage: 'Page not found'
+  }
+}
+
 module.exports = {
   getErrorResponse: getErrorResponse,
+  getDefaultResponse: getDefaultResponse,
+  get404Response: get404Response
 }
