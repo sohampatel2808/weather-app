@@ -12,7 +12,7 @@ const getDefaultResponse = (title) => {
   }
 }
 
-get404Response = () => {
+const get404Response = () => {
   return {
     title: '404',
     errorMessage: 'Page not found'

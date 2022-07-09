@@ -35,23 +35,18 @@ app.get('/help', (req, res) => {
   res.render('help', response.getDefaultResponse('Help'));
 });
 
-app.get('/weather', (req, res) => {
-  geocode(req.query.address, (errorMessage, { longitude, latitude, location } = {}) => {
-    if (errorMessage) {
-      return res.send(response.getErrorResponse(errorMessage));
-    }
+app.get('/weather', async (req, res) => {
+  try {
+    const { longitude, latitude, location } = {} = await geocode(req.query.address);
+    const responseForecastData = await forecast(longitude, latitude);
 
-    forecast(longitude, latitude, (error, responseForecastData) => {
-      if (error) {
-        return res.send(response.getErrorResponse(errorMessage));
-      }
-  
-      return res.send({
-        forecast: responseForecastData,
-        location: location
-      });
+    return res.send({
+      forecast: responseForecastData,
+      location: location
     });
-  });
+  } catch (err) {
+    return res.send(response.getErrorResponse(err));
+  }  
 });
 
 app.get('*', (req, res) => {
